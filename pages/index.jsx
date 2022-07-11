@@ -1,20 +1,18 @@
 import Head from "next/head";
+import React, { useEffect, useState } from "react";
+
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
 import { PostCard, PostWidget, Categories } from "../components/index";
+import { getPosts } from "../services";
 
-const posts = [
-  {
-    title: "React Testing",
-    excerpt: "Learn react Testing",
-  },
-  {
-    title: "React With Tailwind CSS",
-    excerpt: "Learn react with Tailwind CSS",
-  },
-];
+let isOnlineOut = false;
+export default function Home({ posts }) {
+  const [isOnline, setIsOnline] = useState(false);
+  useEffect(() => {
+    window.addEventListener("online", () => setIsOnline(true));
+  }, []);
 
-export default function Home() {
   return (
     <div className="container mx-auto px-10 mb-8 ">
       <Head>
@@ -30,7 +28,7 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <div className="col-span-1 lg:col-span-8 ">
           {posts.map((post, i) => (
-            <PostCard key={i.toString()} post={post} />
+            <PostCard key={i.toString()} post={post.node} />
           ))}
         </div>
         <div className="col-span-1 lg:col-span-4 ">
@@ -43,4 +41,11 @@ export default function Home() {
       </div>
     </div>
   );
+}
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+
+  return {
+    props: { posts },
+  };
 }
