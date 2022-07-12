@@ -1,18 +1,16 @@
+// import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+// import React, { useState, useRef, useEffect } from "react";
 
-// import Image from "next/image";
-// import styles from "../styles/Home.module.css";
-import { PostCard, PostWidget, Categories } from "../components/index";
+import {
+  PostCard,
+  PostWidget,
+  Categories,
+  MoveToTop,
+} from "../components/index";
 import { getPosts } from "../services";
 
-let isOnlineOut = false;
 export default function Home({ posts }) {
-  const [isOnline, setIsOnline] = useState(false);
-  useEffect(() => {
-    window.addEventListener("online", () => setIsOnline(true));
-  }, []);
-
   return (
     <div className="container mx-auto px-10 mb-8 ">
       <Head>
@@ -33,18 +31,18 @@ export default function Home({ posts }) {
         </div>
         <div className="col-span-1 lg:col-span-4 ">
           {/* Displays Categories and recent posts by side on lg and under otherwise*/}
-          <div className="relative lg:sticky top-8">
+          <div className="relative lg:sticky top-8 ">
             <PostWidget />
             <Categories />
           </div>
         </div>
       </div>
+      <MoveToTop />
     </div>
   );
 }
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
-
   return {
     props: { posts },
   };

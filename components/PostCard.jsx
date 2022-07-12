@@ -10,10 +10,10 @@ function PostCard({ post }) {
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className="object-center absolute h-80 w-full object-fill rounded-t-lg lg:rounded-lg "
+          className="object-center absolute h-80 w-full object-fill rounded-t-lg lg:rounded-lg transition duration-700 transform hover:translate-y-1 "
         />
       </div>
-      <h1 className="transition duration-600 text-center mb-8 cursor-pointer hover:text-blue-400 text-2xl font-semi-bold">
+      <h1 className="transition duration-700 hover:translate-x-1 text-center mb-8 cursor-pointer hover:text-[#11B288] text-2xl font-semi-bold">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
@@ -22,7 +22,7 @@ function PostCard({ post }) {
             src={post.author.photo.url}
             height="30px"
             width="30px"
-            className="align-middle rounded-full "
+            className="align-middle rounded-full border border-[#11B288] transition transform duration-700 hover:translate-x-1 "
           />
           <p className="inline align-middle text-gray-700 text-sm ml-2 ">
             {post.author.name}
@@ -31,7 +31,7 @@ function PostCard({ post }) {
         <div className="font-medium text-gray-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 inline mr-2 text-blue-400"
+            className="h-6 w-6 inline mr-2 text-[#11B288]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -53,7 +53,7 @@ function PostCard({ post }) {
       </p>
       <div className="text-center">
         <Link href={`/post/${post.slug}`}>
-          <span className="transition duration-500 transform hover:-translate-y-1.5 text-white px-8 py-3 bg-blue-400 rounded-full cursor-pointer inline-block">
+          <span className="transition duration-500 transform hover:-translate-y-1.5 text-white px-8 py-3 bg-[#11B288] rounded-full cursor-pointer inline-block">
             {" "}
             Continue Reading..
           </span>

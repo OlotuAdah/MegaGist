@@ -33,6 +33,26 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #03b18d;
+    // cursor: pointer;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #2281b1;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2281b1;
+  }
 }
 
 .text-shadow {
